@@ -1,0 +1,10 @@
+passo 1
+
+Dism /Online /Cleanup-Image /ScanHealth
+
+Dism /Online /Cleanup-Image /RestoreHealth
+
+passo 2
+
+“Desempenho/Configurações/Avançado/Memória Virtual (Alterar)”.
+

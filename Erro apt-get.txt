@@ -1,0 +1,7 @@
+$ sudo mv /etc/apt/apt.conf /etc/apt/apt.conf_old
+
+$ sudo apt-get update
+
+depois reinstala
+
+$ sudo apt-get install --reinstall apt

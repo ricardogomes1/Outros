@@ -1,0 +1,1 @@
+psexec \\host cmd    , pronto vc ja esta na estação como linha de comando.

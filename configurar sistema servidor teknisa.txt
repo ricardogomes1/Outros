@@ -1,0 +1,10 @@
+configurar sistema servidor teknisa
+
+Primeiro usuario: teknisa
+
+Sgundo usuario: vazio
+senha: vazio
+
+Endereço: 127.0.0.1
+
+resto igual ja ta

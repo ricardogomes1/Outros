@@ -1,0 +1,50 @@
+Etapa 1
+
+Desative o serviço Superfetch.
+
+Pressione simultaneamente as teclas Windows + R logo será aberto o “Executar” digite no campo em branco "services.msc" (sem aspas) e pressione Enter.
+Localize o serviço " Superfetch” e desative o mesmo. Para fazer isso, dê um duplo clique sobre ele. Nesta nova janela, verifique os itens abaixo.
+Tipo de Inicialização: Altere para "Desativado".
+Status do Serviço: Altere para "Parado".
+Clique em Aplicar > Ok.
+Siga para a etapa 2.
+Etapa 2
+
+Desabilite o schedule do Windows.
+
+Pressione as teclas simultaneamente “Windows + R” logo será aberto o “Executar” digite no campo em branco "regedit " (sem aspas) e pressione Enter.
+Acesse o caminho: HKEY_LOCAL_MACHINE -> SYSTEM -> CurrentControlSet -> Services -> Schedule
+Altere o valor do registro "Start" de 2 para 4
+Reinicie o computador.
+Com isto, todas as tarefas agendadas do Windows não serão executadas e o consumo volta ao normal.
+
+Se o comportamento persistir, faça o próximo procedimento abaixo.
+
+Etapa 3
+
+Inicialização limpa
+
+A inicialização limpa serve para que possa determinar se um programa em segundo plano está interferindo no sistema.? 
+
+   Pressione as teclas Windows + R, digite msconfig e clique em OK;  
+   Na janela Configuração do Sistema clique na aba serviços; 
+   Na parte inferior da tela marque a caixa Ocultar todos os serviços Microsoft e clique em Desativar tudo;  
+   Clique em aplicar e por fim em OK.
+   Reinicie o computador.
+NOTA: Este procedimento desabilita todos serviços e programas de terceiros. Você pode posteriormente, se o problema for solucionado desta forma, habilitar os programas e serviços que serão inicializados com o Windows, seletivamente, ao invés de manter todos desativados. Se o problema voltar após ativação da inicialização de um serviço ou programa em especifico, o problema está exatamente na inicialização deste software e é recomendável removê-lo. 
+
+Etapa 4
+
+Aumente a memória virtual.
+
+Pressione Windows + X agora clique em Sistema.
+Em seguida, clique no botão Configurações avançadas do sistema, localizado na parte esquerda da tela.
+Uma nova janela será aberta. Clique na aba Avançado e, na área Desempenho, aperte no botão Configurações.
+Na nova janela clique na aba Avançado. Na área Memória Virtual clique no botão Alterar.
+Agora, desmarque a opção gerenciar automaticamente o tamanho do arquivo de paginação de todas as unidades.
+Agora marque a unidade que contém o chamado arquivo de paginação. Agora, clique no botão Tamanho personalizado.    
+Feito isso, você é capaz de apontar o tamanho inicial e o tamanho máximo de uso da memória virtual. O recomendado é que você marque, como mínimo, um espaço igual ao tamanho da sua memória RAM instalada no seu computador. Ou seja, se você tem 8 GB de RAM, aponte também os mesmos 8 GB de memória virtual.
+
+Se esta informação foi útil, por favor, clique em "Resolvi meu problema". Caso a sua dúvida não tenha sido solucionada, por favor, poste novamente.
+
+Espero ter ajudado, até mais!

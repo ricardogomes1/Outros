@@ -1,0 +1,6 @@
+Abrir o visualizador de eventos no windows:
+
+Conectar no ad da propria maquina ou abrir dentro do ad mesmo.
+entrar em logs do windows e na aba segurança clicar com o botao direito e selecione localizar.
+Digite o codigo do erro: Bloqueio de usuario 4740 e clicar em localizar.
+Agora é so ir verificando os log de erro ate encontrar a maquina que esta bloqueando o usuario.

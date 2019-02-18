@@ -1,0 +1,7 @@
+Dar permissao para executar um executavel no linux.
+
+entrar em vim /etc/sudoers
+
+adicionar ao arquivo:
+
+ALL ALL = NOPASSWD: caminho do executavel

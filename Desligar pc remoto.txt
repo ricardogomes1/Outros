@@ -1,0 +1,2 @@
+Desligar pc remoto - shutdown -s -t 00 -f -m \\nome_do_computador_remoto
+Reiniciar pc remoto - shutdown -r -t 00 -f -m \\nome_do_computador_remoto

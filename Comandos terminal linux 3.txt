@@ -1,0 +1,254 @@
+Terminal básico
+De Rede Linux
+
+Veja tambem:
+Terminal avançado 
+Comandos comuns 
+Esse artigo visa descrever as ações básicas que se pode fazer no modo texto do linux. Foi pensado para ser feito do inicio ao fim. Por isso os titulos dos paragrafos são dolorosamente pouco esclarescedores 
+Conteúdo
+1 Entrando no modo texto
+2 Onde estou ?
+3 O que há por aqui ?
+4 Para onde vou ?
+5 Para onde eu vou ? Complicando
+6 Para onde eu vou agora ?
+7 Fazendo uma coisa de útil: removendo arquivos
+8 Organizando-se
+9 Se você não seguiu o conselho anterior ...
+10 Conta cheia
+11 Preguiça
+12 Apêndice: Ainda mais sobre andar de um lado para o outro
+13 Guia de referência: Comandos frequentes 
+13.1 Comandos utilizados em "terminal básico"
+13.2 Mais comandos básicos
+13.3 Comandos de ajuda
+Entrando no modo texto
+para utilizar os comandos que serão aqui listados, você precisa ou abrir um terminal dentro do ambiente gráfico (aplicações>acessórios>terminal) ou utilizar o "modo texto". Para entrar no modo texto, aperte ctrl-alt-f*, onde * pode ser qualquer numero de 1 a 6. Para voltar para o gráfico, aperte ctrl-f7 ou (se isso não funcionar) ctrl-f8 
+Note que você, se você se logar no modo texto, continuará logado no modo texto mesmo quando se deslogar do modo gráfico. Você precisa digitar "exit" no mesmo terminal que seu logou (isso é, se você utilizou ctrl-alt-f3 para ir para o modo texto, estará logado no terminal do ctrl-alt-f3, e deve digitar "exit" nesse terminal) 
+Onde estou  ? 
+Sempre que você está em um terminal, há um "diretório atual". para saber em que diretório você está, digite 
+ $ pwd
+Normalmente, esse diretório será 
+ /home/<curso>/<nome_de_usuário>
+Só pra constar: pwd = print working directory 
+O que há por aqui ? 
+Para descobrir quais os arquivos existe no "diretório atual", digite 
+ $ ls
+Para onde vou ? 
+Francamente, eu não sei. 
+o comando "cd" lhe permite entrar em um diretório. Escolher o diretório é com você. Para saber pra onde você pode ir: 
+ $ ls --color
+Os diretórios estão em azul. Para entrar 
+ $ cd <nome_do_diretório>
+(cd = "change directory") 
+Para onde eu vou ? Complicando 
+Tá, você foi pra um diretório. E agora ? Tá preso ? suponhamos que você deu 
+ $ cd private
+ $ pwd
+ /home/<curso>/<nome_de_usuário>/private
+e agora quer voltar pra o diretório onde começou para ir para o diretório acima, você pode digitar 
+ $ cd ..
+ $ pwd
+ /home/<curso>/<nome_de_usuário>/
+e se você por acaso fizer isso de novo 
+ $ cd ..
+ $ pwd
+ /home/<curso>/
+entendeu a idéia ? 
+ $ cd <nome_de_usuário>
+ $ pwd
+ /home/<curso>/<nome_de_usuário>/
+tá. Deve estar claro agora, não ? 
+Para onde eu vou agora ? 
+Sim, ainda há mais a dizer sobre isso ... 
+você pode ter notado que todos os "cd" até agora são relativos. Ou seja: o resultado do comando depende do diretório em que você está quando o dispara (veja acima o resultados dos "cd ..") Existe uma maneira de fazer com que os resultados não variem. Sei que parece cretino ... Confia em mim quando lhe digo que não é. 
+ $ cd /home   <------
+ $ pwd
+ /home
+ $ cd <nome_de_curso>
+ $ pwd
+ /home/<nome_de_curso>
+ $ cd /home   <------
+ $ pwd
+ /home
+ $ cd <nome_do_curso>
+ $ cd <nome_de_usuário>
+ $ pwd
+ /home/<nome_do_curso>/<nome_de_usuario>
+ $ cd /home   <------
+ $ pwd
+ /home
+Nas linhas assinaladas, eu estava em diretórios diferentes (na verdade, eu sequer sei onde eu estava quando dei o primeiro comando) mas o resultado foi igual. 
+Essa idéia de "caminho absoluto" (em oposição à anterior, de "caminho relativo") não é só para o "cd". todo comando de linux pode receber diretórios e arquivos das duas formas. 
+Fazendo uma coisa de útil: removendo arquivos 
+Já enrolamos o bastante ? 
+
+Está na hora de fazer uma coisa legal: Destruir arquivos! 
+o comando "rm" faz isso, e para sua sorte, temos uma coisa bem legal pra destruir: o Cache do Firefox (clique ali pra descobrir porque não é problemático excluir isso) 
+digite 
+$ cd ~
+$ pwd
+/home/<nome_do_curso>/<nome_do_usuário>
+(opa, isso é novo, não ? esse comando te leva para seu diretório inicial. Ou, de forma um pouco mais honesta, o "~" é a mesma coisa que o caminho absoluto do seu diretório inicial) 
+agora, vamos atrás do firefox ! 
+$ cd .mozilla/firefox
+$ ls --color
+há um diretório chamado <alguma_coisa>.default. Entre nele 
+$ cd <alguma_coisa>.default
+$ ls --color
+Achamos o cache ! Porém 
+$ rm Cache
+rm: imposível remover `Cache': É um diretório
+Nos volta uma coisa muito indesejável ... 
+Que tal entrarmos no Cache, e removermos tudo ? 
+$ cd Cache
+$ ls --color  
+$ rm <nome de um arquivo>
+$ rm <nome de outro>
+$ rm <nome de mais um>
+...
+Essa não parece ter sido uma boa idéia ... 
+Vamos agora tentar remover o diretório todo de uma vez ... 
+$ cd ..
+$ rm -r Cache
+(um parênteses que pode ser ignorado: rm -r é igual a: se o argumento for um arquivo, remova-o, e se for um diretório, de rm -r pra tudo que tem dentro dele e então remova ele) 
+Mas, mas ... droga, eu não quero ter que responder sim pra tudo. Eu já tenho certeza que o diretório inteiro é de lixo! Existe uma maneira de acabar com as perguntas: 
+$ rm -rf Cache
+Esse "f" quer dizer "nao pergunte". Use com cuidado ! 
+Organizando-se 
+Crie diretórios pra guardar suas coisas. É uma prática que permite a você não perder arquivos, e diminui o tempo que você perde na frente do micro. Para fazer isso: 
+$ mkdir <nome do diretório>
+Vamos criar no seu diretório inicial 3 falsos eps (ep1.c, ep2.c, ep3.c) 
+$ touch ep1.c ep2.c ep3.c
+(não se preocupe com esse comando) 
+e agora vamos criar um diretório para quardá-lo 
+$ mkdir eps
+e quardar os eps 
+$ mv ep1.c ep2.c ep3.c eps
+$ cd eps
+$ ls --color
+Para esclarecer, o básico do mv é 
+$ mv <lista de arquivos e diretórios> diretório
+Mas ele também pode ser usado para renomear um arquivo ou diretório 
+$ mv <nome_atual> <nome_novo>
+Cuidado com isso, pois se o novo nome for também o nome de outro arquivo que existe no diretório em que você está, você vai destruir esse arquivo que tinha o "novo nome" 
+Se você não seguiu o conselho anterior ... 
+Suponhamos que seu diretório está uma bagunça. Como achar um arquivo ? 
+ $ find ~ -iname '<nome_do_arquivo>'
+Notou o "~" ? Ele é um diretório (lembra ?). Você está indicando pro programa em que diretório procurar. No caso, você pediu que ele procurasse no seu diretório inicial, onde ficam todos os seus arquivos. 
+se você só sabe um pedaço do nome do arquivo, pode tentar: 
+ $ find ~ -iname '*<pedaço_do_nome_do_arquivo>*'
+que lhe dará os arquivos cujo nome contenha o pedaço pedido 
+("*" quer dizer "qq coisa" aqui. Assim, você está procurando um arquivo cujo nome seja 
+"qq coisa"<pedaço_do_nome_do_arquivo>"qq coisa") 
+Conta cheia 
+o comando 
+ $ quota
+diz qual o espaço que você tem em disco 
+Se você estiver sem espaço , use 
+ $ du ~ -h -a | grep [0-9]M
+Para listar os diretórios grandes (sim, aquilo que aparece à esquerda é o tamanho deles) e remova o que for necessário (.<alguma_coisa> é uma pasta oculta. Normalmente, os arquivos de configuração ficam em pastas como essa. Seja cuidadoso) 
+A propósito, ficou curioso ? terminal avançado ! 
+Preguiça 
+Para economizar tempo, quando estiver digitando um nome de comando, de diretório ou de arquivo, aperte TAB. O terminal vai tentar completar o nome pra você 
+Apêndice: Ainda mais sobre andar de um lado para o outro 
+Mentimos para você: Na verdade, (quase) nenhum comando recebe o nome de um arquivo. Sempre que dissemos que o argumento de um comando era o nome de um arquivo, na verdade o argumento era um caminho para aquele arquivo. Mas como você estava no diretório do arquivo, o caminho era coincidentemente o seu nome. 
+Ou seja, 
+se estamos no diretório /home/<nome_do_curso>/<nome_do_usuario> e damos 
+ $ mv ep1.c ep2.c ep3.c eps
+é o mesmo que 
+ $ cd /home
+ $ mv ~/ep1.c <nome_do_curso>/<nome_do_usuario>/ep2.c /home/<nome_do_curso>/<nome_do_usuario>/ep3.c ~/eps
+(quer testar ? bom, você já sabe remover o diretório que tinha gerado antes ...) 
+Como vemos nesse exemplo estapafúrdio, podemos passar os caminhos dos arquivos de diversas formas, mesmo quando esses caminhos são argumentos do mesmo programa. 
+Guia de referência: Comandos frequentes 
+Este guia serve apenas como referência, portanto, os comandos são explicados sucintamente. Para uma explicação mais detalhada, veja os artigos relevantes (usando a ferramenta de busca da wiki) ou utilize "man comando" ou "info comando" 
+Na coluna sintaxe, temos: nome do comando [argumentos opcionais] <argumentos obrigatorios> 
+A lista completa de comandos frequentes encontra-se em Comandos frequentes 
+Comandos utilizados em "terminal básico" 
+Comando 
+Utilidade 
+sintaxe 
+Obs 
+pwd 
+imprime o diretório atual 
+pwd 
+
+ls 
+lista os arquivos de [diretório] 
+ls [diretorio] 
+Se chamado sem argumentos, lista os arquivos do diretório atual. 
+cd 
+seu "diretório atual" passa a ser [diretório] 
+cd [diretorio] 
+Sem argumentos, muda para seu diretório inicial (home/<curso>/<login> , chamado de "seu diretório home" para confundir =P). 
+rm 
+exclui arquivos 
+rm <arquivo1> [arquivos2,3 ...] 
+dá pra remover diretórios cheios com "rm -r" 
+para evitar acidente, remova diretórios vazios com "rmdir" 
+mkdir 
+cria diretórios 
+mkdir <diretório> 
+
+touch 
+cria arquivos 
+touch <arquivo> 
+escondi a verdadeira utilidade desse comando "debaixo do tapete " 
+mv 
+move coisas (arquivos e diretórios) 
+mv <origem> <destino> 
+se <origem> e <destino> forem arquivos, você sobreescreve o <destino>. 
+se <destino> for um diretório, você põe <origem> dentro dele 
+<origem> pode ser um conjunto de arquivos e diretórios, desde que <destino> seja um diretório 
+se <destino> não existir, fica sendo um "renomear" 
+find 
+imprime listas de arquivos em "diretório" 
+find <diretório> 
+find <diretório> -iname 'nome' 
+localiza arquivos com esse nome no diretório 
+Mais comandos básicos 
+Comando 
+Utilidade 
+sintaxe 
+Obs 
+echo 
+imprime strings na tela 
+echo <string> 
+
+cp 
+copia arquivos 
+cp <fonte> <destino> 
+"cp arquivo1 arquivo2" sobreescreve o arquivo2, se ele existir ! 
+date 
+imprime a data do sistema 
+date 
+
+cal 
+imprime um calendário 
+cal 
+
+rwho 
+lista os usuários conectados à rede 
+rwho 
+
+less 
+ler arquivo texto 
+less <arquivo> 
+
+Comandos de ajuda 
+Comando 
+Utilidade 
+sintaxe 
+Obs 
+man 
+manual 
+man <comando> 
+às vezes é meio técnico demais 
+dê uma olhada em "man man" 
+info 
+manual chique 
+info <comando> 
+Se propõe a ser mais amigável 
+Para aprender a lidar com a interface, "info info" 
+Retirado de "http://www.linux.ime.usp.br/wiki/Terminal_b%C3%A1sico"

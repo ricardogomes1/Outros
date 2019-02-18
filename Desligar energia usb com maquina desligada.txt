@@ -1,0 +1,3 @@
+1º abra seu prompt de comando como administrador  
+2º digite na tela de comando, powercfg h off
+3º de enter e pronto 

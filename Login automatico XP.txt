@@ -1,0 +1,6 @@
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+"AutoAdminLogon"="1"
+"DefaultUserName"="nome do usuário"
+"DefaultPassword"="senha do usuário"
+"DefaultDomainName"="dominio local"
+"DontDisplayLastUserName"="0"

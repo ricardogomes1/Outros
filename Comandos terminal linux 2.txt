@@ -1,0 +1,96 @@
+ls lista diretórios
+ls -al lista mostrando também arquivos ocultos
+cd dir muda do diretório atual para o especificado (substituir a variável dir pelo nome da pasta)
+cd muda para o diretório /home (arquivos pessoais)
+pwd mostra o caminho do diretório atual
+mkdir dir* criar um diretório especificado (substituir a variável dir pelo nome da pasta)
+rm arq apaga o arquivo especificado (substituir a variável arq pelo nome do arquivo que se quer excluir)
+rm -r dir apaga o diretório especificado (substituir a variável dir pelo nome da pasta)
+rm -f arq apaga o arquivo especificado forçadamente (-f de force) (substituir a variável arq pelo nome do arquivo que se quer excluir)
+rm -rf dir apaga o diretório especificado forçadamente (substituir a variável dir pelo nome da pasta). Utilize esse comando com extrema atenção!
+cp -r arq1 arq2 copia o “arquivo1” para o “arquivo2” (substituir a variável arq* pelo nome do arquivo)
+cp -r dir1 dir2 copia o diretório1 para o diretório2; cria o diretório2 caso não exista (substituir a variável dir pelo nome do diretório)
+mv arq1 arq2 dupla função: pode ser usado para renomear ou mover arquivo1 para arquivo2. Se arquivo2 for um diretório existente, move arquivo1 para dentro do diretório “arquivo2” (substituir a variável arq pelo nome do arquivo)
+ln -s arq link cria um link simbólico link (atalho) para arquivo (substituir a variável arq pelo nome do arquivo e link pelo nome que terá o atalho)
+touch arq cria ou atualiza o arquivo (substituir a variável arq pelo nome do arquivo)
+cat > arq direciona a entrada padrão para um arquivo (substituir a variável arq pelo nome do arquivo)
+more arq mostra o conteúdo de um arquivo (substituir a variável arq pelo nome do arquivo)
+head arq mostra as primeiras 10 linhas de um arquivo (substituir a variável arq pelo nome do arquivo)
+tail arq mostra as últimas 10 linhas de um arquivo (substituir a variável arq pelo nome do arquivo)
+tail -f arq mostra o conteúdo de um arquivo enquanto ele é atualizado (aumenta de tamanho), iniciando com as últimas 10 linhas (substituir a variável arq pelo nome do arquivo)
+Gerenciamento de processos
+ps mostra os processos de usuário ativos em tempo real
+top mostra todos os processos rodando em tempo real
+kill pid mata um processo específico pelo número ID (substituir pid pelo número do processo)
+killall proc mata todos os processos com o nome especificado (proc, de processos (substituir proc pelo nome do processo)
+bg lista trabalhos parados ou em segundo plano ou pode continua-los também
+fg traz o trabalho mais recente para o primeiro plano
+fg trab traz o trabalho “trab” para o primeiro plano (substituir trab pelo nome do processo)
+Gerenciamento de permissões de arquivos
+chmod octal arq muda as permissões do arquivo “arq” para octal, que pode ser especificada separadamente para “usuário”, “grupo” e “outros”. Os valores em octal são representados abaixo:
+4 - leitura (r, de read)
+2 - gravação (w, de write)
+1 - execução (x, de execute)
+Explanação: Para definir permissões, somam-se os valores acima. Por exemplo, para atribuir ao dono do arquivo (“usuário) acesso total de leitura (r), gravação (w) e execução (x), basta somar o valor octal 4 + 2 + 1 = 7. Supondo que você queira limitar o acesso para membros do “grupo”, permitindo apenas a leitura e gravação, basta somar 4 + 2 = 6. Reunindo os dois exemplos citados, ficaria: chmod 760 (r para usuário, w para grupo e 0 para outros ou "rw-")
+Outros exemplos:
+chmod 777 leitura (r), gravação (w) e execução (x) para todos (“usuário”, “grupo” e “outros”)
+chmod 755 “rwx” para o “dono” (usuário), “rw” para o “grupo” e “outros”
+Para mais informações, digite no terminal: man chmod
+SSH
+ssh usuário@host conecta ao host como usuário (exemplo: ssh fulano@meuservidor)
+ssh -p porta usuário@host conecta ao host na porta especificada (substituir “porta” pelo número da porta configurada)
+ssh-copy-id usuário@host adiciona a sua chave para o host e usuário daquele host; serve para ativar logins sem senha com uso de chaves
+Pesquisa 
+grep sequência arquivos pesquisa pela sequência nos arquivos (substituir a sequência e arquivos pelos valores correspondentes à pesquisa)
+grep -r sequência dir pesquisa recursivamente pela sequência no diretório dir
+comando | grep sequência pesquisa pela sequência na saída do comando (substituir comando e sequência de acordo com os valores a serem buscados)
+locate arq encontra todas as instâncias de um arquivo (substituir a variável arq pelo nome do arquivo)
+Informações do sistema
+date mostra a data e hora atual
+cal mostra um calendário do mês atual
+uptime mostra o tempo de atividade do sistema
+w mostra quem está online
+whoami mostra como quem você está logado
+finger usuário mostra informações do usuário
+uname -a mostra informações do kernels
+cat /porc/cpuinfo mostra informações da CPU
+cat /proc/meminfo mostra informações da memória
+man comando abre o manual do comando especificado (substituir a variável comando pelo nome do comando que se quer conhecer)
+df mostra o uso do disco
+du mostra o uso do espaço em um diretório
+free mostra o uso da memória e swap
+whereis aplicação mostra possíveis localizações do aplicativo (substituir aplicação pelo nome do programa)
+which aplicação mostra que aplicação irá rodar por omissão (substituir aplicação pelo nome do programa)
+Compressão de arquivos
+tar cf pacote.tar arqs cria um pacote TAR (nomeado pacote.tar) com os arquivos especificados (substituir a variável arqs pelo nome do arquivos)
+tar xf pacote.tar extrai os arquivos de “pacote.tar” (substituir a variável pacote.tar pelo nome do arquivo)
+tar czf pacote.tar.gz arqs cria um pacote TAR (nomeado pacote.tar.gz) com compressão GZip
+tar xzf pacote.tar.gz extrai um pacote TAR (nomeado pacote.tar.gz) com compressão GZip
+tar cjf pacote.tar.bz2 cria um pacote TAR (nomeado pacote.tar.bz2) com compressão BZip2
+tar xjf pacote.tar.bz2 extrai um pacote TAR (nomeado pacote.tar.gz) com compressão BZip2
+gzip arq compacta um arquivo e o renomeia para arq.gz (substituir a variável arq pelo nome do arquivo)
+gzip -d arq.gz descompacta arq.gz para um arquivo (substituir a variável arq.gz pelo nome do arquivo)
+Rede 
+ping host envia um pacote ICMP (ping) para o host e mostra o resultado (substituir a variável host pelo domínio de um site ou o número IP)
+whois domínio retorna informações sobre o domínio (substituir a variável domínio pelo endereço de um site ou o número IP)
+dig domínio retorna informações de DNS para o domínio (substituir a variável host pelo domínio de um site ou o número IP)
+dig -x host mostra o retorno reverso para um host (substituir a variável host pelo domínio de um site ou o número IP)
+wget arq faz o download de arquivo (arq) (substituir a variável arq pelo endereço online do arquivo)
+wget -c arq continua o download interrompido de um arquivo (arq) (substituir a variável arq pelo endereço online do arquivo)
+Instalação de pacotes 
+Instalação a partir do código fonte; os comandos devem ser digitados na sequência em um terminal, um de cada vez
+./configure
+make
+make install 
+Comandos de instaladores
+dpkg -i pacote.deb instala um pacote DEB (distros Debian) (substituir a variável pacote.deb pelo nome do pacote de programa)
+rpm -Uvh pacote.rpm instala um pacote RPM (Distros que utilizam RPM) (substituir a variável pacote.rpm pelo nome do pacote de programa)
+Atalhos globais
+Ctrl+C cancela o comando atual em funcionamento
+Ctrl+Z para o comando atual, retorna com fg em primeiro plano ou bg em segundo plano
+Ctrl+D faz logout da sessão atual; similar ao comando exit
+Ctrl+W apaga uma palavra na linha atual
+Ctrl+U apaga a linha inteira
+Ctrl+R tecle para mostrar um comando recente
+!! repete o último comando
+exit faz logout da sessão atual
